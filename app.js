@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var hbs = require('hbs');
+var fs = require('fs');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -24,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', restAPI);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
@@ -56,6 +58,21 @@ app.use(function(err, req, res, next) {
     message: err.message,
     error: {}
   });
+});
+
+
+//Registring Partials directory. All files in the directory 
+// partials are available by filenames as partails
+var partialsDir = __dirname + '/views/partials';
+var filenames = fs.readdirSync(partialsDir);
+filenames.forEach(function (filename) {
+  var matches = /^([^.]+).hbs$/.exec(filename);
+  if (!matches) {
+    return;
+  }
+  var name = matches[1];
+  var template = fs.readFileSync(partialsDir + '/' + filename, 'utf8');
+  hbs.registerPartial(name, template);
 });
 
 
