@@ -1,7 +1,7 @@
 var request = require('request');
 var async = require('async');
 
-module.exports = function(req, res) {
+module.exports = function(info) {
   async.parallel([
     /*
      * First external endpoint
@@ -33,7 +33,8 @@ module.exports = function(req, res) {
    */
   function(err, results) {
     if(err) { console.log(err); res.send(500,"Server Error"); return; }
-    res.send({api1:results[0], api2:results[1]});
+        console.log(results[1]);
+    //return ({api1:results[0], api2:results[1]});
   }
   );
 };

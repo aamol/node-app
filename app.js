@@ -5,12 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var hbs = require('hbs');
+var nconf = require('nconf');
 var fs = require('fs');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var site = require('./site');
-var restAPI = require('./restAPI');
+var routes = require('./controllers/routes/index');
+var users = require('./controllers/routes/users');
+var site = require('./controllers/site');
 
 var app = express();
 
@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', restAPI);
+app.use('/', site);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
@@ -73,6 +73,13 @@ filenames.forEach(function (filename) {
   var name = matches[1];
   var template = fs.readFileSync(partialsDir + '/' + filename, 'utf8');
   hbs.registerPartial(name, template);
+});
+
+hbs.registerHelper('ifCond', function(v1, v2, options) {
+  if(v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
 });
 
 
