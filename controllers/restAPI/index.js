@@ -7,7 +7,7 @@ module.exports = function(info) {
      * First external endpoint
      */
     function(callback) {
-      var url = "http://localhost:9090/user?name=Amol";
+      var url = "http://localhost:8080/user?name=Amol";
       request(url, function(err, response, body) {
         // JSON body
         if(err) { console.log(err); callback(true); return; }
@@ -19,7 +19,7 @@ module.exports = function(info) {
      * Second external endpoint
      */
     function(callback) {
-      var url = "http://localhost:9090/user?name=Raghav";
+      var url = "http://localhost:8080/user?name=Raghav";
       request(url, function(err, response, body) {
         // JSON body
         if(err) { console.log(err); callback(true); return; }
