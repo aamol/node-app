@@ -13,6 +13,8 @@ var users = require('./controllers/routes/users');
 var site = require('./controllers/site');
 var register = require('./controllers/site/register');
 var customer_orders = require('./controllers/site/customer_orders');
+var about_us = require('./controllers/site/about-us');
+var customer_account = require('./controllers/site/customer_account');
 
 var app = express();
 
@@ -32,6 +34,8 @@ app.use('/', site);
 app.use('/register', register);
 app.use('/customer_orders', customer_orders);
 app.use('/users', users);
+app.use('/about-us', about_us);
+app.use('customer_account', customer_account);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -7,7 +7,6 @@ var router = express.Router();
 var contentModule = require('../contentmodule')
 
 
-
 router.get('/', function(req, res, next) {
   var name = req.param('name');
 
@@ -46,9 +45,10 @@ asyncTasks.push(function(callback) {
   }
   );
 });
+
+module.exports = router;
+
 /* GET home page. */
 /*router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 }*/
-
-module.exports = router;

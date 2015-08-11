@@ -11,15 +11,14 @@ var userModule = require('../usermodule')
 //router.use(express.bodyParser());
 
 router.post('/', function(req, res, next) {
-	var user_name=req.body.name;
-  	var password=req.body.password;
+	var password=req.body.password;
   	var email=req.body.email;
-  	console.log("User name = "+user_name+", Email = "+ email +", password is "+password);
+  	console.log("Email = "+ email +", password is "+password);
   	// res.end("yes");
 
 	var asyncTasks = [];
 	asyncTasks.push(function(callback) {
-	    var url = userModule(user_name, email, password);
+	    var url = userModule(email, password);
 	    console.log(url);
 	    request(url, function(err, response, body) {
 	    // JSON body

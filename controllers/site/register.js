@@ -6,7 +6,12 @@ var restAPI =  require('../restAPI');
 var router = express.Router();
 var contentModule = require('../contentmodule')
 
+router.get('/', function(req, res, next) {
+  res.render('register', { title: 'Express' });
+}
+);
 
+module.exports = router;
 
 /*router.get('/register', function(req, res, next) {
   var name = req.param('name');
@@ -46,9 +51,3 @@ asyncTasks.push(function(callback) {
   }
   );
 }*/
-router.get('/', function(req, res, next) {
-  res.render('register', { title: 'Express' });
-}
-);
-
-module.exports = router;
