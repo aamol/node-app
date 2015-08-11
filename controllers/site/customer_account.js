@@ -4,7 +4,7 @@ var request = require('request');
 var bodyParser = require("body-parser");
 var restAPI =  require('../restAPI');
 var router = express.Router();
-var userModule = require('../usermodule')
+var userLogin = require('../usermodule/userLogin')
 
 //router.use(bodyParser.urlencoded({ extended: false }));
 
@@ -18,7 +18,7 @@ router.post('/', function(req, res, next) {
 
 	var asyncTasks = [];
 	asyncTasks.push(function(callback) {
-	    var url = userModule(email, password);
+	    var url = userLogin(email, password);
 	    console.log(url);
 	    request(url, function(err, response, body) {
 	    // JSON body
@@ -29,7 +29,7 @@ router.post('/', function(req, res, next) {
 	    });
     });
 
-	console.log("just before parallel hit");
+	console.log("just before the one hit");
   	async.parallel(asyncTasks, 
 	/*
 	 * Collate results
