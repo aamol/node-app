@@ -3,6 +3,6 @@
     "baseurl": "http://localhost:9090",
     "contentEndpoint": "/content",
     "registerUserEndpoint": "/registerUser",
-    "userLoginEndpoint": "/userLogin",
+    "userLoginEndpoint": "/userLogin"
   }
 }

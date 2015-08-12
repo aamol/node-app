@@ -419,7 +419,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="password_old">Old password</label>
-                                        <input type="password" class="form-control" id="password_old">
+                                        <input type="password" class="form-control" id="password_old" value="{{#each .}} {{{password}}} {{/each}}">
                                     </div>
                                 </div>
                             </div>
@@ -452,7 +452,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="firstname">Firstname</label>
-                                        <input type="text" class="form-control" id="firstname">
+                                        <input type="text" class="form-control" id="firstname" value="{{#each .}} {{{name}}} {{/each}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -515,7 +515,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="text" class="form-control" id="email">
+                                        <input type="text" class="form-control" id="email" value="{{#each .}} {{{email}}} {{/each}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12 text-center">

@@ -39,9 +39,11 @@ router.post('/', function(req, res, next) {
 	function(err, results) {
 		if(err) { console.log(err); res.send(500,"Server Error"); return; }
 	    
-		console.log(results);
-		console.log(results.indexOf(email));
-	    if (results.indexOf(email) > -1) {
+		//console.log(results);
+		console.log(results[0]);
+		console.log(results[0].email);
+		//console.log(results[0].email);
+	    if (results[0].email != undefined) {
 			res.render('customer_account',results);	
 		}else{
 			res.render('register',results);
