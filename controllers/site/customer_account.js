@@ -42,8 +42,9 @@ router.post('/', function(req, res, next) {
 		//console.log(results);
 		console.log(results[0]);
 		console.log(results[0].email);
+		console.log(results[0].errorMessage);
 		//console.log(results[0].email);
-	    if (results[0].email != undefined) {
+	    if (results[0].errorMessage != undefined) {
 			res.render('customer_account',results);	
 		}else{
 			res.render('register',results);
