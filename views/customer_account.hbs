@@ -7,14 +7,21 @@
             </div>
             <div class="col-md-6" data-animate="fadeInDown">
                 <ul class="menu">
-                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+                    <li>
+                        <a href="#" color='red'>Welcome {{#each .}} {{#elseCond  name ''}} {{{name}}} {{/elseCond}} {{/each}}</a>
                     </li>
-                    <li><a href="register">Register</a>
-                    </li>
-                    <li><a href="contact.html">Contact</a>
-                    </li>
-                    <li><a href="#">Recently viewed</a>
-                    </li>
+                    {{#each .}} {{#ifCond  name ''}} 
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+                        </li>
+                        <li>
+                            <a href="register">Register</a> 
+                        </li>
+                        <li>
+                            <a href="about-us">About us</a>
+                        </li>
+                    {{/ifCond}} {{/each}}</a>
+                    
                 </ul>
             </div>
         </div>
@@ -27,7 +34,7 @@
                         <h4 class="modal-title" id="Login">Customer login</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="customer-orders.html" method="post">
+                        <form action="customer-orders" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="email-modal" placeholder="email">
                             </div>
@@ -60,7 +67,7 @@
         <div class="container">
             <div class="navbar-header">
 
-                <a class="navbar-brand home" href="index.html" data-animate-hover="bounce">
+                <a class="navbar-brand home" href="/" data-animate-hover="bounce">
                     <img src="img/logo.png" alt="Obaju logo" class="hidden-xs">
                     <img src="img/logo-small.png" alt="Obaju logo" class="visible-xs"><span class="sr-only">Obaju - go to homepage</span>
                 </a>
@@ -83,7 +90,7 @@
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="index.html">Home</a>
+                    <li class="active"><a href="/">Home</a>
                     </li>
                     <li class="dropdown yamm-fw">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Men <b class="caret"></b></a>
@@ -247,7 +254,7 @@
                                         <div class="col-sm-3">
                                             <h5>Shop</h5>
                                             <ul>
-                                                <li><a href="index.html">Homepage</a>
+                                                <li><a href="/html">Homepage</a>
                                                 </li>
                                                 <li><a href="category.html">Category - sidebar left</a>
                                                 </li>
@@ -264,13 +271,13 @@
                                             <ul>
                                                 <li><a href="register">Register / login</a>
                                                 </li>
-                                                <li><a href="customer-orders.html">Orders history</a>
+                                                <li><a href="customer-orders">Orders history</a>
                                                 </li>
                                                 <li><a href="customer-order.html">Order history detail</a>
                                                 </li>
                                                 <li><a href="customer-wishlist.html">Wishlist</a>
                                                 </li>
-                                                <li><a href="customer-account.html">Customer account / change password</a>
+                                                <li><a href="customer-account">Customer account / change password</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -298,7 +305,7 @@
                                                 </li>
                                                 <li><a href="faq.html">FAQ</a>
                                                 </li>
-                                                <li><a href="about-us">Text page</a>
+                                                <li><a href="about-us">About us</a>
                                                 </li>
                                                 <li><a href="text-right.html">Text page - right sidebar</a>
                                                 </li>
@@ -317,6 +324,7 @@
                 </ul>
 
             </div>
+
             <!--/.nav-collapse -->
 
             <div class="navbar-buttons">
@@ -324,6 +332,7 @@
                 <div class="navbar-collapse collapse right" id="basket-overview">
                     <a href="basket.html" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">3 items in cart</span></a>
                 </div>
+
                 <!--/.nav-collapse -->
 
                 <div class="navbar-collapse collapse right" id="search-not-mobile">
@@ -386,16 +395,16 @@
 
                             <ul class="nav nav-pills nav-stacked">
                                 <li class="active">
-                                    <a href="customer-orders.html"><i class="fa fa-list"></i> My orders</a>
+                                    <a href="customer-orders"><i class="fa fa-list"></i> My orders</a>
                                 </li>
                                 <li>
                                     <a href="customer-wishlist.html"><i class="fa fa-heart"></i> My wishlist</a>
                                 </li>
                                 <li>
-                                    <a href="customer-account.html"><i class="fa fa-user"></i> My account</a>
+                                    <a href="customer-account"><i class="fa fa-user"></i> My account</a>
                                 </li>
                                 <li>
-                                    <a href="index.html"><i class="fa fa-sign-out"></i> Logout</a>
+                                    <a href="/"><i class="fa fa-sign-out"></i> Logout</a>
                                 </li>
                             </ul>
                         </div>

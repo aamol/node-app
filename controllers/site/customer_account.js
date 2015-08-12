@@ -5,6 +5,7 @@ var bodyParser = require("body-parser");
 var restAPI =  require('../restAPI');
 var router = express.Router();
 var userRegister = require('../usermodule/userRegister')
+var contentModule = require('../contentmodule')
 
 //router.use(bodyParser.urlencoded({ extended: false }));
 
@@ -30,6 +31,18 @@ router.post('/', function(req, res, next) {
 	    callback(false,obj);
 	    });
     });
+
+	asyncTasks.push(function(callback) {
+	    var url = contentModule('topnav');
+	    request(url, function(err, response, body) {
+	    // JSON body
+	    if(err) { console.log(err); callback(true); return; }
+	    obj = JSON.parse(body);
+	    callback(false,obj);
+	    });
+	    
+    // body...
+	});
 
 	console.log("just before the one hit");
   	async.parallel(asyncTasks, 
