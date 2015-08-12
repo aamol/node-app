@@ -4,21 +4,23 @@ var request = require('request');
 var bodyParser = require("body-parser");
 var restAPI =  require('../restAPI');
 var router = express.Router();
-var userLogin = require('../usermodule/userLogin')
+var userRegister = require('../usermodule/userRegister')
 
 //router.use(bodyParser.urlencoded({ extended: false }));
 
 //router.use(express.bodyParser());
 
 router.post('/', function(req, res, next) {
+	var user_name=req.body.name;
 	var password=req.body.password;
   	var email=req.body.email;
-  	console.log("Email = "+ email +", password is "+password);
+  	console.log("User name = "+user_name+", Email = "+ email +", password is "+password);
+  	
   	// res.end("yes");
 
 	var asyncTasks = [];
 	asyncTasks.push(function(callback) {
-	    var url = userLogin(email, password);
+	    var url = userRegister(user_name, email, password);
 	    console.log(url);
 	    request(url, function(err, response, body) {
 	    // JSON body
@@ -36,7 +38,16 @@ router.post('/', function(req, res, next) {
 	 */
 	function(err, results) {
 		if(err) { console.log(err); res.send(500,"Server Error"); return; }
-	    res.render('customer_orders',results);
+	    
+		console.log(results);
+		console.log(results.indexOf(email));
+	    if (results.indexOf(email) > -1) {
+			res.render('customer_account',results);	
+		}else{
+			res.render('register',results);
+		};
+		
+	    //res.render('customer_account',results);
 	    //res.render('customer_orders', { title: 'Express' });
 	});
 });

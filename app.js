@@ -35,7 +35,7 @@ app.use('/register', register);
 app.use('/customer_orders', customer_orders);
 app.use('/users', users);
 app.use('/about-us', about_us);
-app.use('customer_account', customer_account);
+app.use('/customer_account', customer_account);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
