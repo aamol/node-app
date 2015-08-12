@@ -1,6 +1,6 @@
 {
   "ws": {
-    "baseurl": "http://localhost:9090",
+    "baseurl": "http://localhost:8080",
     "contentEndpoint": "/content",
     "registerUserEndpoint": "/registerUser",
     "userLoginEndpoint": "/userLogin"
