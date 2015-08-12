@@ -45,9 +45,9 @@ router.post('/', function(req, res, next) {
 		console.log(results[0].errorMessage);
 		//console.log(results[0].email);
 	    if (results[0].errorMessage != undefined) {
-			res.render('customer_account',results);	
+			res.render('register',results);	
 		}else{
-			res.render('register',results);
+			res.render('customer_account',results);
 		};
 		
 	    //res.render('customer_account',results);
