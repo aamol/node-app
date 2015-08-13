@@ -5,6 +5,7 @@ var bodyParser = require("body-parser");
 var restAPI =  require('../restAPI');
 var router = express.Router();
 var userLogin = require('../usermodule/userLogin')
+var contentModule = require('../contentmodule')
 
 //router.use(bodyParser.urlencoded({ extended: false }));
 
