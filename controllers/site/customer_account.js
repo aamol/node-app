@@ -12,7 +12,7 @@ var contentModule = require('../contentmodule')
 //router.use(express.bodyParser());
 
 router.post('/', function(req, res, next) {
-	var user_name=req.body.name;
+	var user_name=req.body.firstName;
 	var password=req.body.password;
   	var email=req.body.email;
 	var asyncTasks = [];
