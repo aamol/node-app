@@ -13,23 +13,38 @@ var userLogin = require('../usermodule/userLogin')
 router.post('/', function(req, res, next) {
   	var password=req.body.password;
   	var email=req.body.email;
-  	console.log("Email = "+ email +", password is "+password);
-  	// res.end("yes");
 
 	var asyncTasks = [];
 	asyncTasks.push(function(callback) {
 	    var url = userLogin(email, password);
-	    console.log(url);
 	    request(url, function(err, response, body) {
 	    // JSON body
-	    console.log(err);
 	    if(err) { console.log(err); callback(true); return; }
 	    obj = JSON.parse(body);
 	    callback(false,obj);
 	    });
     });
+      asyncTasks.push(function(callback) {
+    var url = contentModule('header');
+    request(url, function(err, response, body) {
+    // JSON body
+    if(err) { console.log(err); callback(true); return; }
+    obj = JSON.parse(body);
+    callback(false,obj);
+    });
+    
+  });
 
-	console.log("just before the one hit");
+  asyncTasks.push(function(callback) {
+    var url = contentModule('topnav');
+    request(url, function(err, response, body) {
+    // JSON body
+    if(err) { console.log(err); callback(true); return; }
+    obj = JSON.parse(body);
+    callback(false,obj);
+    });
+  });
+
   	async.parallel(asyncTasks, 
 	/*
 	 * Collate results
@@ -37,7 +52,7 @@ router.post('/', function(req, res, next) {
 	function(err, results) {
 		if(err) { console.log(err); res.send(500,"Server Error"); return; }
 	    
-	    res.render('customer_orders', { title: 'Express' });
+	    res.render('customer_orders', results);
 	});
 });
 

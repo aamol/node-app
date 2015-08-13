@@ -33,8 +33,6 @@ module.exports = function(info) {
    */
   function(err, results) {
     if(err) { console.log(err); res.send(500,"Server Error"); return; }
-        console.log(results[1]);
-    //return ({api1:results[0], api2:results[1]});
   }
   );
 };

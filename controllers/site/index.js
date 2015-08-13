@@ -19,7 +19,6 @@ router.get('/', function(req, res, next) {
     callback(false,obj);
     });
     
-    // body...
   });
 
   asyncTasks.push(function(callback) {
@@ -30,8 +29,6 @@ router.get('/', function(req, res, next) {
     obj = JSON.parse(body);
     callback(false,obj);
     });
-    
-    // body...
   });
 
   async.parallel(asyncTasks, 

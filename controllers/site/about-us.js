@@ -8,7 +8,38 @@ var contentModule = require('../contentmodule')
 
 
 router.get('/', function(req, res, next) {
-  res.render('about-us', { title: 'Express' });
+	var asyncTasks = [];
+  
+  asyncTasks.push(function(callback) {
+    var url = contentModule('header');
+    request(url, function(err, response, body) {
+    // JSON body
+    if(err) { console.log(err); callback(true); return; }
+    obj = JSON.parse(body);
+    callback(false,obj);
+    });
+    
+  });
+
+  asyncTasks.push(function(callback) {
+    var url = contentModule('topnav');
+    request(url, function(err, response, body) {
+    // JSON body
+    if(err) { console.log(err); callback(true); return; }
+    obj = JSON.parse(body);
+    callback(false,obj);
+    });
+  });
+
+  async.parallel(asyncTasks, 
+  /*
+   * Collate results
+   */
+  function(err, results) {
+    if(err) { console.log(err); return; }
+        res.render('about-us',results);
+  }
+  );
 }
 );
 
