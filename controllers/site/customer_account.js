@@ -15,17 +15,11 @@ router.post('/', function(req, res, next) {
 	var user_name=req.body.name;
 	var password=req.body.password;
   	var email=req.body.email;
-  	console.log("User name = "+user_name+", Email = "+ email +", password is "+password);
-  	
-  	// res.end("yes");
-
 	var asyncTasks = [];
 	asyncTasks.push(function(callback) {
 	    var url = userRegister(user_name, email, password);
-	    console.log(url);
 	    request(url, function(err, response, body) {
 	    // JSON body
-	    console.log(err);
 	    if(err) { console.log(err); callback(true); return; }
 	    obj = JSON.parse(body);
 	    callback(false,obj);
@@ -33,16 +27,25 @@ router.post('/', function(req, res, next) {
     });
 
 	asyncTasks.push(function(callback) {
-	    var url = contentModule('topnav');
-	    request(url, function(err, response, body) {
-	    // JSON body
-	    if(err) { console.log(err); callback(true); return; }
-	    obj = JSON.parse(body);
-	    callback(false,obj);
-	    });
-	    
-    // body...
-	});
+    var url = contentModule('header');
+    request(url, function(err, response, body) {
+    // JSON body
+    if(err) { console.log(err); callback(true); return; }
+    obj = JSON.parse(body);
+    callback(false,obj);
+    });
+    
+  });
+
+  asyncTasks.push(function(callback) {
+    var url = contentModule('topnav');
+    request(url, function(err, response, body) {
+    // JSON body
+    if(err) { console.log(err); callback(true); return; }
+    obj = JSON.parse(body);
+    callback(false,obj);
+    });
+  });
 
 	console.log("just before the one hit");
   	async.parallel(asyncTasks, 
@@ -51,12 +54,7 @@ router.post('/', function(req, res, next) {
 	 */
 	function(err, results) {
 		if(err) { console.log(err); res.send(500,"Server Error"); return; }
-	    
-		//console.log(results);
-		console.log(results[0]);
-		console.log(results[0].email);
-		console.log(results[0].errorMessage);
-		//console.log(results[0].email);
+
 	    if (results[0].errorMessage != undefined) {
 			res.render('register',results);	
 		}else{
