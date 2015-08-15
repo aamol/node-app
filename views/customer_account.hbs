@@ -10,9 +10,9 @@
             <div class="col-md-6" data-animate="fadeInDown">
                 <ul class="menu">
                     <li>
-                        <a href="#" color='red'>Welcome {{#each .}} {{#elseCond  name ''}} {{{name}}} {{/elseCond}} {{/each}}</a>
+                        <a href="#" color='red'>Welcome {{#each .}} {{#elseCond firstName ''}} {{{firstName}}} {{/elseCond}} {{/each}}</a>
                     </li>
-                    {{#each .}} {{#ifCond  name ''}} 
+                    {{#each .}} {{#ifCond  firstName ''}} 
                         <li>
                             <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
                         </li>
@@ -226,14 +226,14 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="firstname">Firstname</label>
-                                        <input type="text" class="form-control" id="firstname" value="{{#each .}} {{{name}}} {{/each}}">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" class="form-control" name="firstName" id="firstName" value="{{#each .}} {{{firstName}}} {{/each}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="lastname">Lastname</label>
-                                        <input type="text" class="form-control" id="lastname">
+                                        <label for="lastName">Last Name</label>
+                                        <input type="text" class="form-control" name="lastName" id="lastName">
                                     </div>
                                 </div>
                             </div>
@@ -243,13 +243,13 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="company">Company</label>
-                                        <input type="text" class="form-control" id="company">
+                                        <input type="text" class="form-control" name="company" id="company">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="street">Street</label>
-                                        <input type="text" class="form-control" id="street">
+                                        <input type="text" class="form-control" name="street" id="street">
                                     </div>
                                 </div>
                             </div>
@@ -258,39 +258,41 @@
                             <div class="row">
                                 <div class="col-sm-6 col-md-3">
                                     <div class="form-group">
-                                        <label for="city">Company</label>
-                                        <input type="text" class="form-control" id="city">
+                                        <label for="city">City</label>
+                                        <input type="text" class="form-control" name="city" id="city">
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-3">
                                     <div class="form-group">
                                         <label for="zip">ZIP</label>
-                                        <input type="text" class="form-control" id="zip">
+                                        <input type="text" class="form-control" name="zip" id="zip">
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-3">
                                     <div class="form-group">
                                         <label for="state">State</label>
-                                        <select class="form-control" id="state"></select>
+                                        <!-- <select class="form-control" id="state"></select> -->
+                                        <input type="text" class="form-control" name="state" id="state">
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-3">
                                     <div class="form-group">
                                         <label for="country">Country</label>
-                                        <select class="form-control" id="country"></select>
+                                        <!-- <select class="form-control" id="country"></select> -->
+                                        <input type="text" class="form-control" name="country" id="country">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="phone">Telephone</label>
-                                        <input type="text" class="form-control" id="phone">
+                                        <input type="text" class="form-control" name="phone" id="phone">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="text" class="form-control" id="email" value="{{#each .}} {{{email}}} {{/each}}">
+                                        <input type="text" class="form-control" id="email" name="email" disabled="true" value="{{#each .}} {{{email}}} {{/each}}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12 text-center">

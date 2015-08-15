@@ -12,7 +12,7 @@ var contentModule = require('../contentmodule')
 //router.use(express.bodyParser());
 
 router.post('/', function(req, res, next) {
-	var user_name=req.body.name;
+	var user_name=req.body.firstName;
 	var password=req.body.password;
   	var email=req.body.email;
 	var asyncTasks = [];
@@ -55,7 +55,7 @@ router.post('/', function(req, res, next) {
 	function(err, results) {
 		if(err) { console.log(err); res.send(500,"Server Error"); return; }
 
-	    if (results[0].errorMessage != undefined) {
+	    if (results[0].errorCode != undefined) {
 			res.render('register',results);	
 		}else{
 			res.render('customer_account',results);
