@@ -3,13 +3,11 @@ Feature: Add Numbers
   As a user of the calculator
   I want to add 2 numbers
 
-  @tag2
-  Scenario: Add 2 small numbers
-    Given the calculator is cleared
-    When I add 5 and 6
-    Then the result should be 11
+#  Scenario: Home page validation
+#    When I open home page
+#    Then I should see home page	
 
-  Scenario: Home page validation
-    When I open home page
-    Then I should see home page
-
+  Scenario: Reading documentation
+    Given I am on the Cucumber.js GitHub repository
+    When I go to the README file
+    Then I should see "Usage" as the page title
