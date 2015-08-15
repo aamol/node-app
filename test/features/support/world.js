@@ -1,18 +1,17 @@
-var zombie = require('zombie')
-  , HTML5  = require('html5')
-  , should = require('should')
-  , server = require('../../../server');
+// features/support/world.js
 
-var World = module.exports = function(){
-  this.browser = new zombie.Browser({runScripts:true, debug:false, htmlParser: HTML5});
+var zombie = require('zombie');
+function WorldFactory(callback) {
 
-  this.page = function(path){
-   return "http://localhost:" + server.app.address().port + path
+  var browser = new zombie();
+
+  var world = {
+    browser: browser,                        // this.browser will be available in step definitions
+    visit: function (url, callback) {         // this.visit will be available in step definitions
+      this.browser.visit(url, callback);
+    }
   };
 
-  this.visit = function(path, callback){
-    this.browser.visit( this.page(path), function(err, browser, status){
-      callback(err, browser, status);
-    });
-  };
+  callback(world); // tell Cucumber we're finished and to use our world object instead of 'this'
 };
+exports.World = WorldFactory;
