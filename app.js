@@ -16,6 +16,7 @@ var customer_orders = require('./controllers/site/customer_orders');
 var about_us = require('./controllers/site/about-us');
 var customer_account = require('./controllers/site/customer_account');
 var saveUserProfile = require('./controllers/site/saveUserProfile');
+var productDisplay = require('./controllers/site/productDisplay');
 
 var app = express();
 
@@ -38,6 +39,7 @@ app.use('/users', users);
 app.use('/about-us', about_us);
 app.use('/customer_account', customer_account);
 app.use('/saveUserProfile', saveUserProfile);
+app.use('/productDisplay', productDisplay);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

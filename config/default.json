@@ -4,6 +4,7 @@
     "contentEndpoint": "/content",
     "registerUserEndpoint": "/registerUser",
     "userLoginEndpoint": "/userLogin",
-    "saveUserProfileEndpoint": "/saveUserProfile"
+    "saveUserProfileEndpoint": "/saveUserProfile",
+    "productDisplayEndpoint": "/productDisplay"
   }
 }
