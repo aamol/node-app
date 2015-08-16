@@ -12,7 +12,7 @@ var contentModule = require('../contentmodule')
 //router.use(express.bodyParser());
 
 router.get('/', function(req, res, next) {
-	var productId=req.body.productId;
+	var productId = req.query.productId;
 	var asyncTasks = [];
 	asyncTasks.push(function(callback) {
 	    var url = productDisplay(productId);
@@ -53,6 +53,7 @@ router.get('/', function(req, res, next) {
 	function(err, results) {
 		if(err) { console.log(err); res.send(500,"Server Error"); return; }
 
+		console.log("Error code: " + results[0].errorCode);
 	    if (results[0].errorCode != undefined) {
 			res.render('index',results);	
 		}else{
