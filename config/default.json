@@ -6,8 +6,5 @@
     "userLoginEndpoint": "/userLogin",
     "saveUserProfileEndpoint": "/saveUserProfile",
     "productDisplayEndpoint": "/productDisplay"
-  },
-  "system": {
-  	"port" : "80"
   }
 }
