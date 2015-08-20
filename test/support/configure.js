@@ -9,7 +9,6 @@ var fs = require('fs'),
     envConfigPath = path.join(__dirname, '..', 'config.' + process.env.NODE_ENV + '.js');
 
 if(process.env.NODE_ENV && fs.existsSync(envConfigPath)) {
-	console.log('---------------'+envConfigPath);
     config = merge(config, require(envConfigPath).config);
 }
 
