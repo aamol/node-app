@@ -1,13 +1,10 @@
-@tag1
-Feature: Add Numbers
-  As a user of the calculator
-  I want to add 2 numbers
+Feature: Home Page validation
+    As a user
+    I should be able to open home page 
 
-#  Scenario: Home page validation
-#    When I open home page
-#    Then I should see home page	
-
-  Scenario: Reading documentation
-    Given I am on the Cucumber.js GitHub repository
-    When I go to the README file
-    Then I should see "Usage" as the page title
+Scenario: open sub page of website
+    Given the page url is not "http://localhost"
+    And   I open the site "/"
+    Then  I expect that the url is "http://localhost/"
+    And   I expect that the url is not "http://google.com"
+#    When  I wait on element ".lateElem" for 5000ms to be enabled
