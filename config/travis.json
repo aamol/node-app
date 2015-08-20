@@ -1,4 +1,12 @@
 {
+  "ws": {
+    "baseurl": "http://ec2-52-11-156-62.us-west-2.compute.amazonaws.com:8080/",
+    "contentEndpoint": "/content",
+    "registerUserEndpoint": "/registerUser",
+    "userLoginEndpoint": "/userLogin",
+    "saveUserProfileEndpoint": "/saveUserProfile",
+    "productDisplayEndpoint": "/productDisplay"
+  },
   "system": {
   	"port" : "8081"
   }
