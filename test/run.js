@@ -15,7 +15,7 @@ var spawn = require('child_process').spawn,
  * init script handles the rest
  */
 args.push(path.join(__dirname, 'support', 'init.js'));
-args.push(path.join(__dirname, '..' ,'bin', 'www'));
+//args.push(path.join(__dirname, '..' ,'bin', 'www'));
 
 /**
  * set mocha configs

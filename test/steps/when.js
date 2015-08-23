@@ -10,7 +10,14 @@ module.exports = function() {
             this.browser[method](elem).call(done);
         })
 
-        .when(/^I (add|set) "$string" to the inputfield "$string"$/, function(method, text, element, done) {
+        .when(/^I (add|set) "$string" (random|randomEmail)* to the inputfield "$string"$/, function(method, text, random, element, done) {
+            if(random){
+                text = text+Math.floor((Math.random() * 10000) + 1);
+                if(random=='randomEmail'){
+                    text = text+"@gmail.com"
+                }
+                
+            }
             var command = method === 'add' ? 'addValue' : 'setValue';
             this.browser[command](element, text).call(done);
         })
