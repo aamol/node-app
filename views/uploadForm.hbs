@@ -44,7 +44,7 @@
 			</section><!-- end hero area -->
             
 	<div class="menu-toggle">Upload Image To Scene7</div>
-		<form method="post" action="uploadForm">
+		<form method="POST" enctype="multipart/form-data" id="image_upload" name="image_upload" onSubmit="return uploadImage();">
 			<table class="current">				
 				<tr>
 					<td colspan="2"></td>
@@ -69,54 +69,13 @@
 					<input type="text" value="JPG" size="15" name="file_exts">
 					</td>
 				</tr>
-				<!--<tr>
-					<td><strong> Preserve Color Profile</strong></td><td>
-					<input type="radio"  name="preserve_colorprofile" value="true">
-					Yes&nbsp;&nbsp;
-					<input type="radio"  name="preserve_colorprofile" value="false" checked>
-					No</td>
-				</tr>
-				<tr>
-					<td><strong> Preserve File Name</strong></td><td>
-					<input type="radio"  name="preserve_filename" value="true">
-					Yes&nbsp;&nbsp;
-					<input type="radio"  name="preserve_filename" value="false" checked>
-					No</td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-				</tr>
-				<tr display="none">
-					<td><strong> Knockout Background</strong></td><td>
-					<input type="radio"  name="knockout_background" value="true">
-					Yes&nbsp;&nbsp;
-					<input type="radio"  name="knockout_background" value="false" checked>
-					No</td>
-				</tr>
-				<!--<tr>
-					<td><strong> Corner</strong></td><td>
-					<input type="radio"  name="corner" value="ul" checked>
-					upperLeft&nbsp;&nbsp;
-					<input type="radio"  name="corner" value="ll">
-					lowerLeft&nbsp;&nbsp;
-					<input type="radio"  name="corner" value="ur">
-					upperRight&nbsp;&nbsp;
-					<input type="radio"  name="corner" value="ur">
-					lowerRight</td>
-				</tr>-->
+				
 				<tr>
 					<td><strong> Tolerance</strong></td><td>
 					<input type="text" size="5" name="tolerance">
 					&nbsp;(value between 0 and 1)</td>
 				</tr>
-				<!--<tr style="display=none">
-					<td><strong> Fill Method</strong></td><td>
-					<input type="radio"  name="fill_method" value="ff" checked>
-					Flood Fill&nbsp;&nbsp;
-					<input type="radio"  name="fill_method" value="mp">
-					Match Pixel</td> 
-				</tr>-->
-				
+							
 				<tr>
 					<td><strong>File to upload: : </strong></td>
 					<td>
@@ -138,18 +97,18 @@
 		 </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+     
 		<script language="javascript">
 			function uploadImage() {
-	
-				document.image_upload.action = "https://s7ugc3.scene7.com/ugc/image?op=upload&company_name=" + document.image_upload.company_name.value + 
-												"&upload_token=" + document.image_upload.upload_token.value + 
-												"&file_limit=" + document.image_upload.file_limit.value + 
-												"&file_exts=" + document.image_upload.file_exts.value + 
-												"&preserve_colorprofile=Yes" + 
-												"&preserve_filename=Yes&use_corner=ul&knockout_background=false&fill_method=ff";
+	alert('hi');
+				document.image_upload.action = 
+				"https://s7ugc3.scene7.com/ugc/image?op=upload&company_name=" + document.image_upload.company_name.value + 
+									"&upload_token=" + document.image_upload.upload_token.value + 
+									"&file_limit=" + document.image_upload.file_limit.value + 
+									"&file_exts=" + document.image_upload.file_exts.value + 
+									"&preserve_colorprofile=Yes" + 
+					  				"&preserve_filename=Yes&use_corner=ul&knockout_background=false&fill_method=ff";
+				alert('hello');							
 				return true;
 			}
 		</script>
