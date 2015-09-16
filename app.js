@@ -17,6 +17,11 @@ var about_us = require('./controllers/site/about-us');
 var customer_account = require('./controllers/site/customer_account');
 var saveUserProfile = require('./controllers/site/saveUserProfile');
 var productDisplay = require('./controllers/site/productDisplay');
+var productListing = require('./controllers/site/productListing');
+var breezeUpload = require('./controllers/site/breezeUpload');
+var uploadToken = require('./controllers/site/uploadToken');
+var uploadForm = require('./controllers/site/uploadForm');
+var openForm = require('./controllers/site/openForm');
 
 var app = express();
 
@@ -40,6 +45,11 @@ app.use('/about-us', about_us);
 app.use('/customer_account', customer_account);
 app.use('/saveUserProfile', saveUserProfile);
 app.use('/productDisplay', productDisplay);
+app.use('/productListing', productListing);
+app.use('/breezeUpload', breezeUpload);
+app.use('/uploadToken', uploadToken);
+app.use('/uploadForm', uploadForm);
+app.use('/openForm', openForm);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
