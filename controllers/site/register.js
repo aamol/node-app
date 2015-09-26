@@ -35,7 +35,8 @@ router.get('/', function(req, res, next) {
    * Collate results
    */
   function(err, results) {
-    if(err) { console.log(err); return; }
+    // if(err) { console.log(err); return; }
+    if(err) { console.log(err); res.status(500).send("Server Error"); return; }
         res.render('register',results);
   }
   );

@@ -209,13 +209,14 @@
                     <div class="panel panel-default sidebar-menu">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title">Brands <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> Clear</a></h3>
+                            <h3 class="panel-title">Colour <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> Clear</a></h3>
                         </div>
-
                         <div class="panel-body">
 
                             <form>
                                 <div class="form-group">
+
+                                    
                                     <div class="checkbox">
                                         <label>
                                             <input type="checkbox">Armani (10)
@@ -324,7 +325,22 @@
                                 <h1 class="text-center">White Blouse Armani</h1>
                                 <p class="goToDescription"><a href="#details" class="scroll-to">Scroll to product details, material & care and sizing</a>
                                 </p>
-                                <p class="price">$124.00</p>
+
+                                <p class="price">
+                                    {{#each .}}
+                                        {{#if productPriceFrom}}
+                                            {{#ifCond productPriceFrom '0.0'}}
+                                                ${{{productPriceTo}}}
+                                            {{/ifCond}}
+                                            {{#elseCond productPriceFrom '0.0'}}
+                                                ${{{productPriceFrom}}} - ${{{productPriceTo}}}
+                                            {{/elseCond}}
+                                        {{/if}}
+                                    {{/each}}
+                                    <!-- {{#each .}}
+                                        {{#itemPriceBean}} {{skuId}} {{/itemPriceBean}}
+                                    {{/each}} -->
+                                </p>
 
                                 <p class="text-center buttons">
                                     <a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a> 

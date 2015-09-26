@@ -111,4 +111,11 @@ hbs.registerHelper('elseCond', function(v1, v2, options) {
   return options.inverse(this);
 });
 
+hbs.registerHelper('times', function(n, block) {
+    var accum = '';
+    for(var i = 0; i < n; ++i)
+        accum += block.fn(i);
+    return accum;
+});
+
 module.exports = app;

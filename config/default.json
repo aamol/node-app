@@ -5,6 +5,10 @@
     "registerUserEndpoint": "/registerUser",
     "userLoginEndpoint": "/userLogin",
     "saveUserProfileEndpoint": "/saveUserProfile",
-    "productDisplayEndpoint": "/productDisplay"
+    "productDisplayEndpoint": "/getProductDetails",
+    "productPriceEndpoint": "/getProductPrice",
+    "itemsForProductEndpoint": "/getItemsForProduct",
+    "itemInventoryEndpoint": "/getItemInventory",
+    "productImageEndpoint": "/getProductImages"
   }
 }

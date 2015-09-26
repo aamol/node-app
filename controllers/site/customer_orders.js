@@ -51,7 +51,8 @@ router.post('/', function(req, res, next) {
 	 * Collate results
 	 */
 	function(err, results) {
-		if(err) { console.log(err); res.send(500,"Server Error"); return; }
+		//if(err) { console.log(err); res.send(500,"Server Error"); return; }
+    if(err) { console.log(err); res.status(500).send("Server Error"); return; }
 	    
 	    res.render('customer_orders', results);
 	});
