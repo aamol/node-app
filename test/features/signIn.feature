@@ -7,6 +7,7 @@ Scenario: Sign In from TopNav
     And   I open the site "/"
     Then  I expect that the title is "Shadowpact Ecom"
     When  I click on the element "[data-target='#login-modal']"
+    When  I pause for 1000ms
     When  I add "email" randomEmail to the inputfield "#email-modal"
     When  I add "password" random to the inputfield "#password-modal"
     When  I submit the form "[action='customer_orders']"
