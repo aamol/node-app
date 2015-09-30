@@ -135,4 +135,29 @@ hbs.registerHelper("Max", function(A, B){
   return (A > B) ? A : B;
 });
 
+// greater than or equal to
+hbs.registerHelper('ge', function( a, b ){
+  var next =  arguments[arguments.length-1];
+  return (a >= b) ? next.fn(this) : next.inverse(this);
+});
+
+// greater than
+hbs.registerHelper('gt', function( a, b ){
+  var next =  arguments[arguments.length-1];
+  return (a > b) ? next.fn(this) : next.inverse(this);
+});
+
+// less than or equal to
+hbs.registerHelper('le', function( a, b ){
+  var next =  arguments[arguments.length-1];
+  return (a <= b) ? next.fn(this) : next.inverse(this);
+});
+
+// less than
+hbs.registerHelper('lt', function( a, b ){
+  var next =  arguments[arguments.length-1];
+  return (a < b) ? next.fn(this) : next.inverse(this);
+});
+
+
 module.exports = app;

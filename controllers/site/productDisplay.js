@@ -119,6 +119,7 @@ router.get('/', function(req, res, next) {
         }
 		//if(err) { console.log(err); res.send(500,"Server Error"); return; }
 
+        console.log("Results: " + results[0]);
         console.log("Error code: " + results[0].errorCode);
 	    if (results[0].errorCode != undefined) {
 			res.render('index',results);
