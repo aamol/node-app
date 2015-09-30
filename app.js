@@ -111,11 +111,28 @@ hbs.registerHelper('elseCond', function(v1, v2, options) {
   return options.inverse(this);
 });
 
+// Function to iterate something "n" no. of times
+// Sample: {{#times 10}} {{this}} {{/times}}
 hbs.registerHelper('times', function(n, block) {
     var accum = '';
     for(var i = 0; i < n; ++i)
         accum += block.fn(i);
     return accum;
+});
+
+// Function to iterate in FOR loop on basis of increment factor
+// Sample: {{#for 0 10 2}} {{this}} {{/for}}
+hbs.registerHelper('for', function(from, to, incr, block) {
+    var accum = '';
+    for(var i = from; i < to; i += incr)
+        accum += block.fn(i);
+    return accum;
+});
+
+// Function to get the max of two numbers.
+// Sample: {{Max 12 45}}
+hbs.registerHelper("Max", function(A, B){
+  return (A > B) ? A : B;
 });
 
 module.exports = app;
