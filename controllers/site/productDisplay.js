@@ -11,7 +11,7 @@ var getItemInventory = require('../productmodule/getItemInventory');
 var getItemsForProduct = require('../productmodule/getItemsForProduct');
 var getProductPrice = require('../productmodule/getProductPrice');
 var getProductImages = require('../productmodule/getProductImages');
-
+var getProductOptions = require('../productmodule/getProductOptions');
 //router.use(bodyParser.urlencoded({ extended: false }));
 
 //router.use(express.bodyParser());
@@ -26,7 +26,7 @@ router.get('/', function(req, res, next) {
 	    request(url, function(err, response, body) {
 	    // JSON body
 	    if(err) { console.log(err); callback(true); return; }
-	    console.log("Body: " + body);
+	    console.log("\n ProductDetails Body: " + body);
 	    obj = JSON.parse(body);
 	    callback(false,obj);
 	    });
@@ -34,7 +34,7 @@ router.get('/', function(req, res, next) {
 
 	asyncTasks.push(function(callback) {
     var url = contentModule('header');
-    console.log("content header URL: " + url);
+    console.log("\n content header URL: " + url);
     request(url, function(err, response, body) {
     // JSON body
     if(err) { console.log(err); callback(true); return; }
@@ -46,7 +46,7 @@ router.get('/', function(req, res, next) {
 
   asyncTasks.push(function(callback) {
     var url = contentModule('topnav');
-    console.log("topnav content URL: " + url);
+    console.log("\n topnav content URL: " + url);
     request(url, function(err, response, body) {
     // JSON body
     if(err) { console.log(err); callback(true); return; }
@@ -57,11 +57,11 @@ router.get('/', function(req, res, next) {
 
 	asyncTasks.push(function(callback) {
     var url = getItemsForProduct(productId);
-    console.log("getItemsForProduct URL: " + url);
+    console.log("\n getItemsForProduct URL: " + url);
     request(url, function(err, response, body) {
     // JSON body
     if(err) { console.log(err); callback(true); return; }
-    console.log("Items for Product: Body: " + body);
+    console.log("\n Items for Product: Body: " + body);
     obj = JSON.parse(body);
     callback(false,obj);
     });
@@ -73,7 +73,19 @@ router.get('/', function(req, res, next) {
     request(url, function(err, response, body) {
     // JSON body
     if(err) { console.log(err); callback(true); return; }
-    console.log("Product price: Body: " + body);
+    console.log("\n Product price: Body: " + body);
+    obj = JSON.parse(body);
+    callback(false,obj);
+    });
+  });
+
+    asyncTasks.push(function(callback) {
+    var url = getProductOptions(productId);
+    console.log("getProductOptions URL: " + url);
+    request(url, function(err, response, body) {
+    // JSON body
+    if(err) { console.log(err); callback(true); return; }
+    console.log("\n Product options: Body: " + body);
     obj = JSON.parse(body);
     callback(false,obj);
     });
@@ -96,12 +108,20 @@ router.get('/', function(req, res, next) {
 	 * Collate results
 	 */
 	function(err, results) {
-		if(err) { console.log(err); res.status(500).send("Server Error"); return; }
+		if(err) { 
+            console.log(err); 
+            console.log(err.message); 
+            //res.status(500).send("Server Error");
+            res.set('errorMessage', 'Apologies for not displaying you the right page you wished. We will investigate what went wrong!!');
+            //results[0].errorMessage = "Apologies for not displaying you the right page you wished. We will investigate what went wrong!!";
+            res.render('index',results);
+            return; 
+        }
 		//if(err) { console.log(err); res.send(500,"Server Error"); return; }
 
-		console.log("Error code: " + results[0].errorCode);
+        console.log("Error code: " + results[0].errorCode);
 	    if (results[0].errorCode != undefined) {
-			res.render('index',results);	
+			res.render('index',results);
 		}else{
 			res.render('productDisplay',results);
 		};

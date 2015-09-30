@@ -9,6 +9,7 @@
     "productPriceEndpoint": "/getProductPrice",
     "itemsForProductEndpoint": "/getItemsForProduct",
     "itemInventoryEndpoint": "/getItemInventory",
-    "productImageEndpoint": "/getProductImages"
+    "productImageEndpoint": "/getProductImages",
+    "productOptionsEndpoint": "/getProductOptions"
   }
 }
