@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "iojs ./bin/www",
-    "test": "iojs test/run.js"
+    "start": "node ./bin/www",
+    "test": "node test/run.js"
   },
   "dependencies": {
     "async": "^1.4.0",
